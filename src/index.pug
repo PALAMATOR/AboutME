@@ -17,8 +17,22 @@ html(lang = "en")
               .header__row
                 .logo_case
                   img(src='res/img/Case.png', alt='Case')
-          .block__row.personal-data
-          .block__row.checkbox-about
+          .block__row
+            .personal-date
+              each text, label in {'Полное ФИО':'Виговский Эдуард', 'Год рождения':"1995", 'Место жительства':'о. Русский, Кампус ДВФУ', 'Скайп':'-', 'Почта':'wardofhell@ya.ru'}
+                .personal-date__row
+                  .input
+                    label= label
+                    span
+                      input(type='text', value= text)
+          .block__row
+            .checkbox-about
+              .checkbox-about_row
+                .labelbox
+                  h1 Заголовок 
+                  p Какой-то там текст
+              .checkbox-about_row
+                .checkbox    
           .block__row.js-lvl
           .block__row.words-about
           .block__row.future-plans

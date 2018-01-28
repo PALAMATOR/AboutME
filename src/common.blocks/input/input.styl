@@ -1,0 +1,31 @@
+@font-face
+  font-family PT
+  font-weight 700
+  src url(res/font/PT_Sans/PT_Sans-Caption-Bold_UP.ttf)
+
+@font-face
+  font-family Courier
+  font-weight 100
+  src url(res/font/Courier/Courier_New.ttf)
+
+.input
+  input
+    font-family Courier
+    font-size 1.325rem
+    line-height 2rem
+    letter-spacing 0.1rem
+    background none
+    border none
+    outline none
+    margin 0 0.5rem
+  span
+    margin-left 1rem
+    border none
+    border-bottom 3px solid
+    border-image url(res/img/Line.png) 0 0 10 0 round
+  label
+    align-self flex-end
+    font-family PT
+    font-size 0.975rem
+    line-height 1rem
+    font-kerning normal // dont works
