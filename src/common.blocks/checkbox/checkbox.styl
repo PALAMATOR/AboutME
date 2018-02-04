@@ -1,14 +1,39 @@
 .checkbox
-  padding 1rem 0.5rem
-  article
-    column-count 2
-    span
-      width 100%
-      label
-        font-family PT_big
-        color #2f1b15
-        font-weight 700
-        font-size 0.955rem
-        line-height 1rem
-        letter-spacing 0.01rem
-        margin-left .5rem
+  padding 0.815rem 0 0
+  height 7*38px
+  flex-direction column
+  justify-content start
+  &__item
+    width 32%
+    flex-direction row
+    align-items center
+    margin-bottom 0.1rem
+    input
+      display none
+      & + label::before
+        content ''
+        display flex
+        position relative
+        bottom 0.3rem
+        width 28px
+        height 33px
+        margin-right 0.15rem
+        background url('res/img/CheckBox&RadioButton.png') left center no-repeat
+      &:checked + label::before
+        background url('res/img/CheckBox&RadioButton.png') -28px center no-repeat
+    label
+      display flex
+      font-family PT_big
+      color #2f1b15
+      font-weight 700
+      font-size 0.955rem
+      line-height 1.2rem
+      &::before
+        &:last-child
+          margin-right 1rem
+    label[for='checkbox__item_16']
+      &::after
+        content 'ок'
+        display flex
+        margin-left 0.25rem
+        margin-top 0.05rem

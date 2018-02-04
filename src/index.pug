@@ -33,6 +33,18 @@ html(lang = "en")
                   p Отметьте чекбоксами пункты, которые соответствуют вашим скиллам. Кстати, отсутствие опыта не означает, что у вас меньше шансов стать одним из наших товарищей. Это означает что вы будете получать те задачи, с которыми гарантировано будете справляться
               .checkbox-about__row
                 .checkbox
+                  - var i = 0
+                  - var id = ''
+                  each value, label in {'БЭМ/OOCSS':1, 'Pug (Jade)':1, 'Stylus/LESS/SASS':1, 'Работаю с SVG':1, 'Верстаю семантично':1, 'Accessibility (A11Y)':0, 'ES2015/ES2016':1, 'GULP/GRUNT':1, 'Webpack':0, 'Дружу с WebGL':1, 'jQuery':1, 'Знаю/изучаю Angular':0, 'Знаю/изучаю React':0, 'Знаю/изучаю Node.js':0, 'Использую Git':1, 'С глазомером всё':1, 'Я ленивый(-ая)':1, 'У меня хороший английский':1}
+                    - i++
+                    - id = 'checkbox__item_' + i
+                    .checkbox__item
+                      if value == 1
+                        input(id= id type="checkbox" checked)
+                      else
+                        input(id= id type="checkbox")
+                      label(for= id)= label
+                        
           .block__row.js-lvl
           .block__row.words-about
           .block__row.future-plans
