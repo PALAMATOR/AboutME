@@ -1,0 +1,20 @@
+@import "../../library.blocks/mixins/container/container.styl"
+
+.slider
+  {container}
+  {container__column}
+  &__box
+    {container}
+    justify-content start
+    position relative
+    left 0
+  &__flag
+    position relative
+    width 1rem
+    height 1rem
+    left 0
+    background red
+  &__value-line
+    width 100%
+  &__value-label
+    width 100%

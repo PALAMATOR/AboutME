@@ -4,7 +4,7 @@ html(lang = "en")
     meta(charset = 'utf-8')
     title About Me - Vigovsky Edward
     link(href='style.css', rel='stylesheet')
-    script(src='script.js', type='text/javascript')
+    script(src='scrypt.js', defer, type='text/javascript')
     
     body.page
       .block
@@ -43,9 +43,18 @@ html(lang = "en")
                         input(id= id type="checkbox" checked)
                       else
                         input(id= id type="checkbox")
-                      label(for= id)= label
-                        
-          .block__row.js-lvl
+                      label(for= id)= label  
+          .block__row
+            .js-lvl
+              .js-lvl__row
+                .labelbox
+                  h1 Уровень владения JavaScript
+              .js-lvl__row
+                .slider#slider
+                  .slider__box
+                    .slider__flag
+                  .slider__value-line
+                  .slider__value-label
           .block__row.words-about
           .block__row.future-plans
           .block__row.form-date

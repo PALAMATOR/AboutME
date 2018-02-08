@@ -22,7 +22,7 @@
     document.onmouseup = function() {
       document.onmousemove = document.onmouseup = null;
     };
-    
+
     return false;
   };
 

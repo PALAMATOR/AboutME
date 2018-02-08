@@ -29,10 +29,10 @@ gulp.task('Pug', function () {
 });
 
 gulp.task('CompressJS', function () {
-    return gulp.src('src/scrypt.js')
-        .pipe(concatJS("scrypt.js"))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist'))
+    return gulp.src('src/**/*.js')
+      .pipe(concatJS('scrypt.js'))
+      //.pipe(uglify())
+      .pipe(gulp.dest('dist'));
 });
 
 gulp.task('CompressIMG', function () {
@@ -46,6 +46,6 @@ gulp.task('CompressIMG', function () {
 gulp.task('UBER Watch', ['Stylus', 'Pug', 'CompressJS', 'CompressIMG'], function () {
     gulp.watch('src/**/*.styl', ['Stylus']);
     gulp.watch('src/**/*.pug', ['Pug']);
-    gulp.watch('src/**/*.js', ['SCompressJS']);
+    gulp.watch('src/**/*.js', ['CompressJS']);
     gulp.watch('src/**/*.png', ['CompressIMG']);
 });
