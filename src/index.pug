@@ -51,10 +51,13 @@ html(lang = "en")
                   h1 Уровень владения JavaScript
               .js-lvl__row
                 .slider#slider
+                  - var slider__array_label = ['Не владею', 'Использую готовые решения', 'Использую готовые решения и умею их переделывать', 'Пишу сложный JS с нуля']
                   .slider__box
                     .slider__flag
                   .slider__value-line
-                  .slider__value-label
+                  .slider__value-label-box#slider__value
+                    each label in slider__array_label
+                      .slider__value-label-item= label
           .block__row.words-about
           .block__row.future-plans
           .block__row.form-date
