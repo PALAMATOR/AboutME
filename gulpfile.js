@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     concatCss = require('gulp-concat-css'),
     concatJS = require('gulp-concat'),
     uglify = require('gulp-uglify'),
+    flatten = require('gulp-flatten'),
     imagemin = require('gulp-imagemin');
 
 gulp.task('Stylus', function () {
@@ -40,6 +41,7 @@ gulp.task('CompressIMG', function () {
         .pipe(imagemin(
             imagemin.optipng({optimizationlevel: 7})
         ))
+        .pipe(flatten())
         .pipe(gulp.dest('dist/res/img'))
 });
 
