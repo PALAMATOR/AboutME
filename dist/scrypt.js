@@ -1,9 +1,10 @@
-(function(){
-  var slider = document.getElementById('slider');
-  var slider__box = slider.children[0];
-  var slider__flag = slider__box.children[0];
+'use strict';
 
-  var slider__value = document.getElementById('slider__value');
+(function(){
+  var slider = document.getElementById('slider'),
+      slider__box = slider.children[0],
+      slider__flag = slider__box.children[0],
+      slider__value = document.getElementById('slider__value');
 
   //set defoult fag value
   slider__flag.style.left = slider__value.children[2].getBoundingClientRect().left - slider__box.getBoundingClientRect().left - 6 + 'px';
@@ -11,7 +12,7 @@
   slider__value.onmouseover = function(doc){
     var target = doc.target;
     if (target != this){
-      if (target.tagName = 'DIV'){
+      if (target.tagName == 'DIV'){
         target.onmousedown = function(doc){
           if (target == slider__value.firstChild) slider__flag.style.left = '0px';
           else if (target == slider__value.lastChild) slider__flag.style.left = slider__box.clientWidth - slider__flag.clientWidth + 'px';
@@ -40,3 +41,14 @@
     }
   }
 })();
+
+'use strict';
+
+(function(){
+  console.log('textarea');
+  var textarea_box = document.getElementById('textarea'),
+      textarea = textarea_box.firstChild,
+      textarea_style = getComputedStyle(textarea);
+  textarea.onkeydown = function(){
+  }
+})()

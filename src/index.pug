@@ -5,7 +5,6 @@ html(lang = "en")
     title About Me - Vigovsky Edward
     link(href='style.css', rel='stylesheet')
     script(src='scrypt.js', defer, type='text/javascript')
-    
     body.page
       .block
         .block__column
@@ -55,9 +54,26 @@ html(lang = "en")
                   .slider__box
                     .slider__flag
                   .slider__value-line
-                  .slider__value-label_box#slider__value
+                  .slider__value-label-box#slider__value
                     each label in slider__array_label
-                      .slider__value-label_item= label
-          .block__row.words-about
-          .block__row.future-plans
-          .block__row.form-date
+                      .slider__value-label-item= label
+          .block__row
+            .words-about
+              .words-about__row
+                .labelbox
+                  h1 Расскажите о себе словами
+                  p Напишите пару предложений, чем вас привлекла наша вакансия и чего вы ожидаете от работы в CSSSR. Кстати, будет здорово, если при нехватке места для текста строки будут добавляться автоматически.
+                  .textarea#textarea
+                    textarea
+          .block__row
+            .future-plans
+              .future-plans__row
+                .labelbox
+                  h1 Какие у вас планы на будущее?
+                  p Этот ответ ни на что не повлияет. Не беда, если в будущем ваши планы поменяются.
+          .block__row
+            .form-date
+              .form-date__row
+                .labelbox
+                  h1 Дата заполнения
+              .form-date__row
