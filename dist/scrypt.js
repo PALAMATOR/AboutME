@@ -45,10 +45,114 @@
 'use strict';
 
 (function(){
-  console.log('textarea');
   var textarea_box = document.getElementById('textarea'),
       textarea = textarea_box.firstChild,
-      textarea_style = getComputedStyle(textarea);
-  textarea.onkeydown = function(){
+      textarea_style_lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10),
+      textarea_counter = textarea.scrollHeight;
+
+  function textareaUpDateHeight(){
+    if (textarea_counter < textarea.scrollHeight){
+      textarea.style.height = textarea.scrollHeight + 'px';
+      textarea_counter += textarea_style_lineHeight;
+      textareaAddNewBackgroundLine(textarea_counter);
+    }
   }
+
+  function textareaAddNewBackgroundLine(value){
+    var textarea_style_background = htmlStyleGetComputedBackground(textarea, ['backgroundImage',
+                                                                              'backgroundOrigin',
+                                                                              'backgroundPositionX',
+                                                                              'backgroundPositionY',
+                                                                              'backgroundRepeat',
+                                                                              'backgroundSize' ]),
+        textarea_style_backgroundPositionY_last_value = parseInt(htmlStyleGetLastPropertyValue(textarea_style_background.backgroundPositionY), 10) + textarea_style_lineHeight;
+    for (var property in textarea_style_background){
+      if (property == 'backgroundPositionY'){
+        textarea_style_background[property] += ', ' + textarea_style_backgroundPositionY_last_value + 'px';
+      } else {
+        textarea_style_background[property] += ', ' + htmlStyleGetLastPropertyValue(textarea_style_background[property]);
+      }
+      textarea.style[property] = textarea_style_background[property];
+    }
+  }
+  textarea.oninput = textareaUpDateHeight;
 })()
+
+'use strict'
+
+function htmlStyleGetLastPropertyValue(list_property){
+  var array_property = list_property.split(', ');
+  return  array_property[array_property.length - 1];
+}
+
+function htmlStyleGetComputedBackground(element, background_property){
+  var element_styles = {},
+      element_background = {},
+      defaultproperty = [ 'backgroundAttachment',
+                              'backgroundBlendMode',
+                              'backgroundClip',
+                              'backgroundColor',
+                              'backgroundImage',
+                              'backgroundOrigin',
+                              'backgroundPositionX',
+                              'backgroundPositionY',
+                              'backgroundRepeat',
+                              'backgroundSize' ],
+      element_background_property = background_property === undefined ||  background_property == [] ? background_property : background_property;
+
+  if (typeof(element) === 'object' && element instanceof HTMLElement){
+    element_styles = getComputedStyle(element);
+    element_background = jsObjectCopySelectedProperty(element_styles, element_background_property);
+  } else {
+    console.error('htmlStyleGetComputedBackground: argument is not a HTMLElement');
+    return undefined;
+  }
+  return element_background;
+}
+
+'use strict'
+
+function jsObjectCopySelectedProperty(){
+  /*copyObjectProperty(arg1, arg2, ... , argN)
+    where function returning is properties from argN in arg1 + arg2 + .. + argN;
+  */
+  var output_object = {},
+      input_object = {},
+      property_list = arguments[arguments.length - 1];
+  if (property_list == []){
+    console.error('jsObjectCopySelectedProperty: property list is empty');
+    return undefined;
+  }
+  for (var i = 0; i < arguments.length - 1; i++){
+    if (typeof(arguments[i]) === 'object'){
+      input_object = jsObjectMergeProperty(arguments[i]);
+      for (var property in property_list){
+        if (input_object.hasOwnProperty(property_list[property])){
+          output_object[property_list[property]] = input_object[property_list[property]];
+        }
+      }
+    } else {
+      console.error('jsObjectCopySelectedProperty: ' + i + ' argument is not object');
+      return undefined;
+    }
+  }
+  return output_object;
+}
+
+function jsObjectMergeProperty(){
+  /*copyObjectProperty(arg1, arg2, ... , argN)
+    where function returning is expanding by arg1 + arg2 + .. + argN;
+  */
+  var output_object = {};
+  for (var i = 0; i < arguments.length; i++){
+    if (typeof(arguments[i]) === 'object'){
+      for (var property in arguments[i]){
+        output_object[property] = arguments[i][property];
+      }
+    } else {
+      console.error('jsObjectMergeProperty: ' + i + ' argument is not object');
+      return undefined;
+    }
+  }
+  return output_object;
+}
