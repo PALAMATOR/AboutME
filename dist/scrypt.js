@@ -51,11 +51,12 @@
       textarea_counter = textarea.scrollHeight;
 
   function textareaUpDateHeight(){
-    if (textarea_counter < textarea.scrollHeight){
+    if (textarea_counter < textarea.scrollHeight || textarea.clientHeight < textarea.scrollHeight){
       textarea.style.height = textarea.scrollHeight + 'px';
       textarea_counter += textarea_style_lineHeight;
       textareaAddNewBackgroundLine(textarea_counter);
     }
+    console.log(textarea);
   }
 
   function textareaAddNewBackgroundLine(value){
@@ -76,6 +77,7 @@
     }
   }
   textarea.oninput = textareaUpDateHeight;
+  document.addEventListener('DOMContentLoaded',textareaUpDateHeight, false)
 })()
 
 'use strict'
