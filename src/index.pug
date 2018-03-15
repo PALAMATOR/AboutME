@@ -71,6 +71,19 @@ html(lang = "en")
                 .labelbox
                   h1 Какие у вас планы на будущее?
                   p Этот ответ ни на что не повлияет. Не беда, если в будущем ваши планы поменяются.
+              .future-plans__row
+                .radiobutton
+                  - var i = 0
+                  - var id = ''
+                  each value, label in {'Верстать':0, 'Прокачиваться в JS':0, 'Менеджерство':0, 'Другое':1}
+                    - i++
+                    - id = 'radiobutton__item_' + i
+                    .radiobutton__item
+                      if value == 1
+                        input(id= id name="future-plans" type="radio" checked)
+                      else
+                        input(id= id name="future-plans" type="radio")
+                      label(for= id)= label 
           .block__row
             .form-date
               .form-date__row

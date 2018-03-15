@@ -7,7 +7,7 @@
       slider__value = document.getElementById('slider__value');
 
   //set defoult fag value
-  slider__flag.style.left = slider__value.children[2].getBoundingClientRect().left - slider__box.getBoundingClientRect().left - 6 + 'px';
+  slider__flag.style.left = slider__box.clientWidth - slider__flag.clientWidth + 'px';
 
   slider__value.onmouseover = function(doc){
     var target = doc.target;

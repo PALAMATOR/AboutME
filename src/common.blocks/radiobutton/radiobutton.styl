@@ -1,0 +1,25 @@
+.radiobutton
+  justify-content start
+  &__item
+    width auto
+    input
+      display none
+      & + label::before
+        content ''
+        display flex
+        position relative
+        bottom 0.3rem
+        width 28px
+        height 28px
+        margin-right 0.15rem
+        background url('res/img/CheckBox&RadioButton.png') -56px center no-repeat
+      &:checked + label::before
+        background url('res/img/CheckBox&RadioButton.png') -84px center no-repeat
+    label
+      display flex
+      font-family PT_big
+      color #2f1b15
+      font-weight 700
+      font-size 0.9rem
+      line-height 1.2rem
+      padding 0.45rem
