@@ -3,19 +3,28 @@
 (function(){
   var textarea_box = document.getElementById('textarea'),
       textarea = textarea_box.firstChild,
-      textarea_style_lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10),
-      textarea_counter = textarea.scrollHeight;
+      textarea_style_lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10);
 
-  function textareaUpDateHeight(){
-    if (textarea_counter < textarea.scrollHeight || textarea.clientHeight < textarea.scrollHeight){
+  function textareaStarHeight(){
+    var num_lines = 0;
+    if (textarea.clientHeight < textarea.scrollHeight){
       textarea.style.height = textarea.scrollHeight + 'px';
-      textarea_counter += textarea_style_lineHeight;
-      textareaAddNewBackgroundLine(textarea_counter);
+      num_lines = textarea.scrollHeight / textarea_style_lineHeight;
+      for (var i = 0; i < Math.ceil(num_lines) - 1; i++){
+        textareaAddNewBackgroundLine();
+      }
     }
-    console.log(textarea);
   }
 
-  function textareaAddNewBackgroundLine(value){
+  function textareaNewHeight(){
+    var num_lines = 0;
+    if (textarea.clientHeight < textarea.scrollHeight){
+      textarea.style.height = textarea.scrollHeight + 'px';
+      textareaAddNewBackgroundLine();
+    }
+  }
+
+  function textareaAddNewBackgroundLine(){
     var textarea_style_background = htmlStyleGetComputedBackground(textarea, ['backgroundImage',
                                                                               'backgroundOrigin',
                                                                               'backgroundPositionX',
@@ -32,6 +41,6 @@
       textarea.style[property] = textarea_style_background[property];
     }
   }
-  textarea.oninput = textareaUpDateHeight;
-  document.addEventListener('DOMContentLoaded',textareaUpDateHeight, false)
+  textarea.oninput = textareaNewHeight;
+  document.addEventListener('DOMContentLoaded',textareaStarHeight, false)
 })()
