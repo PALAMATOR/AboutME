@@ -137,6 +137,14 @@
   document.addEventListener('DOMContentLoaded',textareaStarHeight, false)
 })()
 
+'use stric';
+
+(function(){
+
+  console.log('fff');
+
+})()
+
 'use strict'
 
 function htmlStyleGetLastPropertyValue(list_property){
