@@ -75,18 +75,21 @@ html(lang = "en")
                 .radiobutton
                   - var i = 0
                   - var id = ''
-                  each value, label in {'Верстать':0, 'Прокачиваться в JS':0, 'Менеджерство':0, 'Другое':1}
+                  each value, label in arr = {'Верстать':0, 'Прокачиваться в JS':0, 'Менеджерство':0, 'Другое':1}
                     - i++
-                    - id = 'radiobutton__item_' + i
+                    - id = i != Object.keys(arr).length ? 'radiobutton__item_' + i : 'radiobutton__item_other'
                     .radiobutton__item
                       if value == 1
                         input(id= id name="future-plans" type="radio" checked)
                       else
                         input(id= id name="future-plans" type="radio")
-                      label(for= id)= label 
+                      label(for= id)= label
+              .future-plans__row
+                .input
+                  span
+                    input(id="radiobutton__input" type="text" value="Прокачиваться в full stack web developer")
           .block__row
             .form-date
               .form-date__row
                 .labelbox
                   h1 Дата заполнения
-              .form-date__row
