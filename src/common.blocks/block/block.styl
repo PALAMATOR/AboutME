@@ -7,8 +7,14 @@
   background-repeat repeat
   padding padding_top_bottom padding_left_right
   padding-bottom .75rem
-  width 50rem - (2 * padding_left_right)
+  @media screen and (max-width: 600px)
+    padding 0
+  max-width 50rem - (2 * padding_left_right)
   &__row
     padding 2rem 2.7rem 1rem 2.5rem
+    @media screen and (max-width: 600px)
+      padding 1rem 0 1rem 0
     &:first-child
       padding 0
+      @media screen and (max-width: 600px)
+        padding 1rem 0 1rem 0
