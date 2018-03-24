@@ -140,12 +140,38 @@
 'use stric';
 
 (function(){
-
-  console.log('fff');
-
+  let q = new WidgetCalendar({
+        widgetClass: 'DATEPICKER',
+        widgetParentId: 'calendar__input',
+        widgetEvent: [
+          'onclick'
+        ]
+      });
 })()
 
-'use strict'
+function WidgetCalendar(options){
+  /* using
+  *  js.js : jsObjectMergeProperty()
+  *  html.js : htmlStringToHTMLElement()
+  */
+  const options_default = {
+          widgetClassName: '',
+          widgetParentId: 'calendar__input'
+        }
+}
+
+'use strict';
+
+function htmlStringToHTMLElement(element){
+  if (typeof(element) === 'string'){
+    return document.getElementById(element);
+  } else if (typeof(element) == 'object' && element instanceof HTMLElement){
+    return element;
+  } else {
+    console.error('htmlElementStringToObject: type of element is invalid');
+    return undefined;
+  }
+}
 
 function htmlStyleGetLastPropertyValue(list_property){
   var array_property = list_property.split(', ');

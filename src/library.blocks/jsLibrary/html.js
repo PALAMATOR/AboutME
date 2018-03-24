@@ -1,4 +1,15 @@
-'use strict'
+'use strict';
+
+function htmlStringToHTMLElement(element){
+  if (typeof(element) === 'string'){
+    return document.getElementById(element);
+  } else if (typeof(element) == 'object' && element instanceof HTMLElement){
+    return element;
+  } else {
+    console.error('htmlElementStringToObject: type of element is invalid');
+    return undefined;
+  }
+}
 
 function htmlStyleGetLastPropertyValue(list_property){
   var array_property = list_property.split(', ');

@@ -12,10 +12,12 @@ html(lang = "en")
             .header
               .header__row
                 .logo_secretly
-                  img(src='res/img/Secretly.png', atl='Secretly')
+                  .logo_secretly__row
+                    img(src='res/img/Secretly.png', atl='Secretly')
               .header__row
                 .logo_case
-                  img(src='res/img/Case.png', alt='Case')
+                  .logo_case__row
+                    img(src='res/img/Case.png', alt='Case')
           .block__row
             .personal-date
               each text, label in {'Полное ФИО':'Виговский Эдуард', 'Год рождения':"1995", 'Место жительства':'о. Русский, Кампус ДВФУ', 'Скайп':'-', 'Почта':'wardofhell@ya.ru'}
@@ -91,9 +93,9 @@ html(lang = "en")
           .block__row
             .form-date
               .form-date__row
-                .calendar#calendar
+                .calendar
                   .labelbox
                     h1 Дата заполнения
                   .input
                     span
-                      input(id="radiobutton__input" type="text" value="01.01.2018")
+                      input(id="calendar__input" type="text" value="01.01.2018")
